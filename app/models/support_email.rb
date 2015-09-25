@@ -1,34 +1,53 @@
-class SupportEmail
-  attr_reader :subject, :email, :body, :phone
-  def initialize(subject:,email:,body:,phone:,name:)
-    @subject = subject
-    @email = email
-    @body = body
-    @name = name
-    @phone = phone
-  end
+class SupportEmail < ActiveRecord::Base
+  validates :subject, presence: true
+  validates :body, presence: true
 
   def name
-    @name || "N/A"
+    name = subject.match(/from (.+?) \(/)
+    name[1].split.map(&:capitalize).join(" ") if name
+  end
+
+  def email_address
+    read_attribute(:email_address) || begin
+      email = subject.match(/\((.+)\)/)
+      if email
+        update_attribute(:email_address, email[1])
+        email[1]
+      end
+    end
+  end
+
+  def phone_number
+    phone = body.match(/phone(.+?)user/)
+    phone[1].scan(/\d/).join if phone
   end
 
   def area
-    match = @subject.match(/from the (.+?) area/)
-    if match
-      return match[1]
+    area = subject.match(/from the (.+?) area/)
+    if area
+      area[1]
     else
-      @phone
+      area = PhoneArea.new(phone_number).area if phone_number
+      code = AreaCode.where(number: area)[0]
+      p AreaCode.all
+      if code
+        state = code.state
+        region = PhoneArea.region_for_state(state)
+      end
+      region || area
     end
   end
 
   def type
-    case @subject
+    case subject
     when /login issues/
       "Login Issues"
     when /general feedback/
       "General Feedback"
     when /pricing issues/
       "Pricing Issues"
+    else
+      "Support Request"
     end
   end
 end

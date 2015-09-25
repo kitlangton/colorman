@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
+  resources :area_codes
+  get 'support_email/index'
+
+  get 'support_email/new'
+
+  get 'support_email/show'
+
   root 'home#index'
+  resources :support_email
   get 'support/index', as: 'support', to: 'support#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

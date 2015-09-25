@@ -12,22 +12,31 @@ class PhoneArea
   NORTHEAST = ["Massachusetts", "Connecticut", "Maine", "New Hampshire", "New Jersey", "New York", "Pennsylvania", "Rhode Island", "Vermont"]
   WEST = ["California", "Oregon", "Washington"]
   MIDWEST = ["Indiana", "Ohio", "Kansas", "Nebraska", "South Dakota", "Illinois", "Iowa", "Michigan", "Minnesota", "Missouri", "North Dakota", "Wisconsin"]
-  REGIONS = { SOUTH => 'south', NORTHEAST => 'nea' , WEST => 'west', MIDWEST => 'mw' }
+  REGIONS = { SOUTH => 'South', NORTHEAST => 'NorthEast' , WEST => 'West', MIDWEST => 'MidWest' }
 
 
-  def initialize(number:)
+  def initialize(number)
     @number = number.to_s
   end
 
-  def process
+  def self.region_for_state(name)
+    REGIONS.each do |r, region_name|
+      if r.any? { |state| state == name }
+        return region_name
+      end
+    end
+  end
+
+  def area
     name = US.subregions.coded(region)
     REGIONS.each do |r, region_name|
       if r.any? { |state| state == name.to_s }
-         return information_for(region_name)
+        return region_name
       end
     end
-    return "Not A Valid Area Code"
+    @area_code
   end
+
 
   def information_for(region_name)
     "Hello, this is a shared account. Please log in with:\n\n" +
@@ -37,6 +46,7 @@ class PhoneArea
 
   def region
     phone = Phoner::Phone.parse(@number)
+    @area_code = phone.area_code
     @digits = "#{phone.area_code}#{phone.number}"
     phone.area_code.to_region
   end
@@ -44,5 +54,4 @@ class PhoneArea
   def digits
     @digits
   end
-
 end

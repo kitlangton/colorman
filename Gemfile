@@ -20,6 +20,8 @@ gem 'gmail'
 gem 'area'
 gem 'phone'
 gem 'carmen'
+gem 'selenium-webdriver'
+gem 'best_in_place'
 
 group :production do
   gem 'rails_12factor'
@@ -27,15 +29,15 @@ end
 
 group :development, :test do
   gem 'rspec-rails'
-  gem 'better_errors'
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
-  gem "binding_of_caller"
-  gem 'byebug'
   gem 'capybara'
+  gem 'byebug'
 end
 
 group :development do
+  gem 'better_errors'
+  gem "binding_of_caller"
   gem 'web-console', '~> 2.0'
   gem 'spring'
 end

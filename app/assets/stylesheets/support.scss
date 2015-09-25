@@ -2,8 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$primary-color: grey;
+
+body {
+  font-family: $helvetica;
+}
+
 .email {
-  background-color: lightgrey;
+  border: 1px solid lightgrey;
   padding: 5px;
   margin: 10px;
 
@@ -11,7 +17,20 @@
     font-weight: bold;
   }
 
+  .area {
+    font-weight: bold;
+  }
+
+  .type {
+    font-size: 0.8em;
+    padding: 2px 5px;
+    border-radius: 10px;
+    background-color: $primary-color;
+    color: white;
+  }
+
   span {
     margin: 5px
   }
 }
+

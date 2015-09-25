@@ -1,5 +1,5 @@
 class SupportController < ApplicationController
   def index
-    @emails = SupportEmailFactory.new.all
+    @emails = SupportEmail.all
   end
 end

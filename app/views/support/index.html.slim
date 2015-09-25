@@ -6,8 +6,11 @@ h1 Support
       span.name
         = email.name
       span.email_address
-        = email.email
-      span.type
-        = email.area
+        = best_in_place email, :email_address, inner_class: "bip"
+      span.area
+        - if email.area =~ /\d/
+          = link_to "Add #{email.area}", new_area_code_path(number: email.area)
+        -else
+          = email.area
       span.type
         = email.type

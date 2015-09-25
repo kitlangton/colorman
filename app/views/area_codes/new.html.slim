@@ -1,0 +1,11 @@
+h1 New Area Code
+
+= form_for @area_code do |f|
+  = f.label :number 
+  = f.text_field :number, disabled: true
+  = f.hidden_field :number
+  br
+  = f.label :state
+  = f.text_field :state, autofocus: true
+  br
+  = f.submit

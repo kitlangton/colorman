@@ -1,17 +1,18 @@
 require 'rails_helper'
-require_relative '../support/mock_support_emails.rb'
 
 feature 'Admin can view support email' do
   scenario 'successfully' do
+    email = create(:support_email)
     visit root_path
     click_link_or_button "Support"
-    expect(page).to have_css '.name', text:  'Steven Fraser'
-    expect(page).to have_css '.email', text:  'kit.langton+steven@gmail.com'
-    expect(page).to have_css '.area', text: "West"
+    expect(page).to have_css '.name', text:'Steven Fraser'
+    expect(page).to have_css '.email', text: 'kit.langton+steven@gmail.com'
+    expect(page).to have_content "West"
     expect(page).to have_css '.type', text: "Login Issues"
   end
 
-  scenario 'and manage it' do
+  xscenario 'and manage it' do
+    create(:support_email)
     visit root_path
     click_link_or_button "Support"
     click_link_or_button "Send Support Email"
