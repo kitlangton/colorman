@@ -36,6 +36,8 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    area (0.10.0)
+      fastercsv (~> 1.5)
     arel (6.0.3)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
@@ -54,6 +56,8 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    carmen (1.0.2)
+      activesupport (>= 3.0.0)
     coderay (1.1.0)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
@@ -72,6 +76,7 @@ GEM
     factory_girl_rails (4.5.0)
       factory_girl (~> 4.5.0)
       railties (>= 3.0.0)
+    fastercsv (1.5.5)
     figaro (1.1.1)
       thor (~> 0.14)
     globalid (0.3.6)
@@ -106,6 +111,7 @@ GEM
       mini_portile (~> 0.6.0)
     oauth (0.4.7)
     pg (0.18.3)
+    phone (1.2.3)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -213,11 +219,13 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  area
   better_errors
   binding_of_caller
   bourbon
   byebug
   capybara
+  carmen
   coffee-rails (~> 4.1.0)
   database_cleaner
   factory_girl_rails
@@ -227,6 +235,7 @@ DEPENDENCIES
   jquery-rails
   neat
   pg
+  phone
   rails (= 4.2.4)
   rails_12factor
   rspec-rails

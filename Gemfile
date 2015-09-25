@@ -17,6 +17,9 @@ gem 'figaro'
 gem 'bourbon'
 gem 'neat'
 gem 'gmail'
+gem 'area'
+gem 'phone'
+gem 'carmen'
 
 group :production do
   gem 'rails_12factor'
