@@ -10,4 +10,11 @@ feature 'Admin can view support email' do
     expect(page).to have_css '.area', text: "West"
     expect(page).to have_css '.type', text: "Login Issues"
   end
+
+  scenario 'and manage it' do
+    visit root_path
+    click_link_or_button "Support"
+    click_link_or_button "Send Support Email"
+    expect(page).to have_css ""
+  end
 end
