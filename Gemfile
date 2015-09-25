@@ -15,6 +15,7 @@ gem 'slim-rails'
 gem 'figaro'
 gem 'bourbon'
 gem 'neat'
+gem 'gmail'
 
 group :production do
   gem 'rails_12factor'
@@ -37,6 +38,5 @@ end
 
 group :test do
   gem 'database_cleaner'
-  gem 'factory_girl_rails'
 end
 

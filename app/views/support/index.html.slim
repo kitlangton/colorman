@@ -3,7 +3,11 @@ h1 Support
 .emails
   - @emails.each do |email|
     .email
-      .from
-        = mail.from
-      .subject
-        = mail.subject
+      span.name
+        = email.name
+      span.email_address
+        = email.email
+      span.type
+        = email.area
+      span.type
+        = email.type

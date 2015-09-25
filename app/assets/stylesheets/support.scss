@@ -1,3 +1,17 @@
 // Place all the styles related to the support controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.email {
+  background-color: lightgrey;
+  padding: 5px;
+  margin: 10px;
+
+  .name {
+    font-weight: bold;
+  }
+
+  span {
+    margin: 5px
+  }
+}
