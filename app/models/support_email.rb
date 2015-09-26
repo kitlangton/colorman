@@ -7,6 +7,10 @@ class SupportEmail < ActiveRecord::Base
     name[1].split.map(&:capitalize).join(" ") if name
   end
 
+  def first_name
+    name.split(" ")[0]
+  end
+
   def email_address
     read_attribute(:email_address) || begin
       email = subject.match(/\((.+)\)/)
@@ -29,7 +33,6 @@ class SupportEmail < ActiveRecord::Base
     else
       area = PhoneArea.new(phone_number).area if phone_number
       code = AreaCode.where(number: area)[0]
-      p AreaCode.all
       if code
         state = code.state
         region = PhoneArea.region_for_state(state)
@@ -48,6 +51,25 @@ class SupportEmail < ActiveRecord::Base
       "Pricing Issues"
     else
       "Support Request"
+    end
+  end
+
+  def area_account
+    "#{area_account_prefix}agentcards"
+  end
+
+  def area_account_prefix
+    case area
+    when "NorthEast"
+      'nea'
+    when "MidWest"
+      'mw'
+    when "West"
+      'west'
+    when "South"
+      'south'
+    else
+      ''
     end
   end
 end

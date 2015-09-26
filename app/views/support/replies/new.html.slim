@@ -1,0 +1,14 @@
+h1
+  | Mail for 
+  span.strong = @support.type
+
+.mail-example
+  .heading
+    .to
+      | To: 
+      = @mail.to.join(", ")
+    .subject = @mail.subject
+  .body
+    = @mail.part[1].body.raw_source
+
+= button_to "Send", support_replies_path(email: @support)

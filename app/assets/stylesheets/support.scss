@@ -34,3 +34,18 @@ body {
   }
 }
 
+.mail-example {
+  margin: 10px;
+  border: 1px solid black;
+
+  .body {
+    margin-top: -10px;
+    padding: 10px;
+  }
+  .heading {
+    background-color: lightgrey;
+    padding: 10px;
+    font-weight: bold;
+  }
+}
+

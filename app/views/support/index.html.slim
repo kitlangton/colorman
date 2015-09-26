@@ -14,3 +14,5 @@ h1 Support
           = email.area
       span.type
         = email.type
+      span.reply
+        = link_to "Reply", new_support_reply_path(email: email)

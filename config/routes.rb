@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
+  namespace :support do
+    resources :replies
+  end
+
   resources :area_codes
-  get 'support_email/index'
-
-  get 'support_email/new'
-
-  get 'support_email/show'
 
   root 'home#index'
   resources :support_email
