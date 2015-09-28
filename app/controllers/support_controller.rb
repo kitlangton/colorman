@@ -1,5 +1,5 @@
 class SupportController < ApplicationController
   def index
-    @emails = SupportEmail.all
+    @emails = SupportEmail.unarchived
   end
 end

@@ -3,28 +3,12 @@ Hi <%= AreaUser.for(@support.area).first_name %>,
 </p>
 
 <p>
-A user in your region submitted feedback:
+We received this support request from <strong> <a href="mailto:<%=@support.email_address%>"><%=@support.name%></a></strong> in the <%=@support.area%> region:
 </p>
 
-<p>
+<h4>
 <%= @support.body %>
-</p>
-
-<p>
-Please log in with these credentials:
-</p>
-
-<p>
-Username: <strong><%= @support.area_account %></strong>
-</p>
-
-<p>
-Password:  <strong>p@ssword1</strong>
-</p>
-
-<p>
-The url is: <a href="http://www.indirectcalloutcard.com/login">http://www.indirectcalloutcard.com/login</a>
-</p>
+</h4>
 
 <p>
 Thanks,

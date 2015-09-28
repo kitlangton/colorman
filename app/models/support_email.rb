@@ -1,6 +1,7 @@
 class SupportEmail < ActiveRecord::Base
   validates :subject, presence: true
   validates :body, presence: true
+  scope :unarchived, -> { where(archived: false) }
 
   def name
     name = subject.match(/from (.+?) \(/)
@@ -71,5 +72,9 @@ class SupportEmail < ActiveRecord::Base
     else
       ''
     end
+  end
+
+  def archive!
+    update_attribute(:archived, true)
   end
 end

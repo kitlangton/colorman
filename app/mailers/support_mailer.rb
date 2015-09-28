@@ -1,5 +1,6 @@
 class SupportMailer < ApplicationMailer
   default from: "kit.langton@coloredge.com"
+  ADMINS = "jeff.reardon@coloredge.com,joe.buccheri@coloredge.com"
 
   def login_issues(support)
     @support = support
@@ -8,6 +9,7 @@ class SupportMailer < ApplicationMailer
 
   def general_feedback(support)
     @support = support
-    mail(to: "kit.langton@gmail.com", subject: "#{@support.subject}")
+    area_user_email = AreaUser.for(@support.area).email_address
+    mail(to: area_user_email, cc: ADMINS, subject: "#{@support.subject}")
   end
 end

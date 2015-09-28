@@ -22,6 +22,7 @@ gem 'phone'
 gem 'carmen'
 gem 'selenium-webdriver'
 gem 'best_in_place'
+gem 'whenever'
 
 group :production do
   gem 'rails_12factor'
@@ -36,6 +37,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'spring-commands-rspec'
   gem 'better_errors'
   gem "binding_of_caller"
   gem 'web-console', '~> 2.0'
@@ -45,4 +47,3 @@ end
 group :test do
   gem 'database_cleaner'
 end
-
